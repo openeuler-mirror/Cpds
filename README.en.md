@@ -1,7 +1,7 @@
 # Cpds
 
 #### Description
-Container Problem Detect System
+CPDS (Container Problem Detect System) is a container cluster problem detection system, it's designed and developed by Linx Software Co., Ltd. The software system realizes the monitoring and identification of container TOP faults and sub-health detection.
 
 #### Software Architecture
 Software architecture description
