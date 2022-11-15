@@ -1,7 +1,7 @@
 # Cpds
 
 #### 介绍
-Container Problem Detect System
+CPDS (Container Problem Detect System) 容器故障检测系统，是由北京凝思软件股份有限公司设计并开发的容器集群故障检测系统，该软件系统实现了对容器TOP故障、亚健康检测的监测与识别。
 
 #### 软件架构
 软件架构说明
