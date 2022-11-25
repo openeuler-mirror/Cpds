@@ -4,19 +4,36 @@
 CPDS (Container Problem Detect System) is a container cluster problem detection system, it's designed and developed by Linx Software Co., Ltd. The software system realizes the monitoring and identification of container TOP faults and sub-health detection.
 
 #### Software Architecture
-Software architecture description
+CPDS (Container Problem Detect System) Consists of 4 components  
+*   [cpds-agent](https://gitee.com/openeuler/cpds-agent)
+    ：The data collection component is responsible for collecting the container and system raw data of each node of the cluster.    
+    code reviewer:
+        [@Feixiang Li](https://gitee.com/linx-fxli)
+        [@Junhan Zeng](https://gitee.com/zeng-junhan)  
+    repo owner:
+        [@Yixiang Peng](https://gitee.com/pencc)
 
-#### Installation
+*   [cpds-detector](https://gitee.com/openeuler/cpds-detector)
+    ：The anomaly detection component analyzes the raw data of each node according to the configured anomaly rules, and detects whether there is an anomaly in the node.  
+    code reviewer:
+        [@Feixiang Li](https://gitee.com/linx-fxli)  
+    repo owner:
+        [@Yixiang Peng](https://gitee.com/pencc)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+*   [cpds-analyzer](https://gitee.com/openeuler/cpds-analyzer)
+    ：Fault/sub-health diagnosis component, according to the configured diagnosis rules, conducts health analysis on abnormal nodes and calculates the current health status of nodes.  
+    code reviewer：
+        [@Feixiang Li](https://gitee.com/linx-fxli)  
+    repo owner：
+        [@Yixiang Peng](https://gitee.com/pencc)
 
-#### Instructions
+*    [cpds-dashboard](https://gitee.com/openeuler/cpds-dashboard)
+    ：User interaction component, providing web pages, displaying the health status of nodes in the cluster, and supporting the distribution of diagnosis rule configuration.  
+    code reviewer：
+        [@Feixiang Li](https://gitee.com/linx-fxli)  
+    repo owner：
+        [@Yixiang Peng](https://gitee.com/pencc)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
 
 #### Contribution
 
@@ -24,13 +41,3 @@ Software architecture description
 2.  Create Feat_xxx branch
 3.  Commit your code
 4.  Create Pull Request
-
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
