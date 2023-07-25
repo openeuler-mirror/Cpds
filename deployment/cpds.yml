@@ -1,0 +1,88 @@
+# prometheus
+global:
+  scrape_interval: 2s
+  evaluation_interval: 3s
+
+scrape_configs:
+  - job_name: "cpds"
+
+    static_configs:
+      - targets: ["127.0.0.1:20001"]
+
+
+# cpds-detector
+generic:
+  bindAddress: "127.0.0.1"
+  port: 19092
+
+database:
+  host: "127.0.0.1"
+  port: 3306
+  username: root
+  password: root
+  maxOpenConnections: 123
+
+prometheus:
+  host: "127.0.0.1"
+  port: 9090
+
+log:
+  fileName: "/home/linx/workspace/cpds/cpds-detector/storage/log/test.log"
+  level: "warn"
+  maxAge: 15
+  maxBackups: 100
+  maxSize: 100
+  localTime: true
+  compress: true
+
+
+# cpds-analyzer
+generic:
+  bindAddress: "127.0.0.1"
+  port: 19091
+
+database:
+  host: "127.0.0.1"
+  port: 3306
+  username: root
+  password: root
+  maxOpenConnections: 123
+
+detector:
+  host: "127.0.0.1"
+  port: 19092
+
+log:
+  fileName: "/home/linx/workspace/cpds/cpds-analyzer/storage/log/test.log"
+  level: "warn"
+  maxAge: 15
+  maxBackups: 100
+  maxSize: 100
+  localTime: true
+  compress: true
+
+
+# cpds-ui
+server {
+  listen 10119;
+
+  location / {
+    root /etc/cpds/cpds-ui/;
+    index index.html index.htm;
+  }
+
+  location /api/ {
+    proxy_pass http://127.0.0.1:19091;
+  }
+
+  location /websocket/ {
+    proxy_pass http://127.0.0.1:19091;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto http;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "Upgrade";
+  }
+}
+
