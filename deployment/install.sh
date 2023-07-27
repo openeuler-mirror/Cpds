@@ -1,6 +1,6 @@
 #!/bin/bash
 set -x
-
+#profile
 config_file="cpds.yml"
 function extract_config {
   local start_line=$(grep -n "$1" "$config_file" | cut -d: -f1)
@@ -19,7 +19,7 @@ function extract_config {
 }
 
 
-
+#Install mariadb database
 rpm -i --nodeps mariadb/*.rpm --force
 systemctl start mariadb.service
 systemctl enable mariadb.service
@@ -37,23 +37,23 @@ EOF
 mysql < database/create_database.sql
 mysql cpds < database/create_table.sql
 mysql cpds < database/rule.sql
-#mysql -u root<<EOF
-#GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
-#EOF
+mysql -u root<<EOF
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
+EOF
 
-
+#install cpds-analyezr
 rpm -i cpds-analyzer-1.0-linx99.aarch64.rpm
 extract_config "# cpds-analyzer" "/etc/cpds/analyzer/config.yml" "cpds-analyzer.service"
 
-
+#install cpds-detector
 rpm -i cpds-detector-1.0-linx99.aarch64.rpm
 extract_config "# cpds-detector" "/etc/cpds/detector/config.yml" "cpds-detector.service"
 
-
+#install prometheus
 rpm -i prometheus-2.45.0-linx99.aarch64.rpm
 extract_config "# prometheus" "/etc/prometheus/prometheus.yml" "prometheus.service"
 
-
+#install cpds-ui
 rpm -i --nodeps nginx/*.rpm --force
 rpm -i cpds-ui-1.0-1.0.0.aarch64.rpm
 extract_config "# cpds-ui" "/etc/nginx/conf.d/cpds-ui.conf" "nginx.service"
