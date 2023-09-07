@@ -1,0 +1,12 @@
+[Unit]
+Description=Cpds Service
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /usr/bin/cpdsctl start
+ExecReload=/bin/bash /usr/bin/cpdsctl restart
+ExecStop=/bin/bash /usr/bin/cpdsctl stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
