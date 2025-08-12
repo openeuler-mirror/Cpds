@@ -1,0 +1,10 @@
+label: CPDS User Guide
+isManual: true
+description: CPDS for container fault and sub_health status monitoring
+sections:
+  - label: CPDS Introduction
+    href: ./cpds_introduction.md
+  - label: Installation and Deployment
+    href: ./installation_and_deployment.md
+  - label: Usage Instructions
+    href: ./usage_instructions.md

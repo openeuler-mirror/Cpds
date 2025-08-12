@@ -1,0 +1,10 @@
+label: CPDS用户指南
+isManual: true
+description: 使用 CPDS 监测容器故障及亚健康状态
+sections:
+  - label: CPDS介绍
+    href: ./cpds_introduction.md
+  - label: 安装与部署
+    href: ./installation_and_deployment.md
+  - label: 使用方法
+    href: ./usage_instructions.md
